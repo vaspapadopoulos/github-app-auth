@@ -1,5 +1,7 @@
 # github-app-auth
 
+![Python 3.9](https://img.shields.io/badge/python-3.9-blue)
+
 A simple Python script to authenticate to GitHub as a GitHub App.
 
 The script is based on the Ruby script found in
