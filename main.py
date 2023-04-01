@@ -25,4 +25,4 @@ if __name__ == "__main__":
     }
     encoded = jwt.encode(payload=payload, key=key, algorithm="RS256")
 
-    print(encoded)
+    print(encoded.decode())
