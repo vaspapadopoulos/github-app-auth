@@ -9,9 +9,23 @@ The script is based on the Ruby script found in
 . The script requires the GitHub App ID and the path of the PEM-formatted private key and
 generates the encoded JWT token.
 
-# Example usage
+## Get JWT for a GitHub App
+
+Required environment variables:
+- `GH_APP_ID` The GitHub App ID
+- `GH_APP_KEY` The path for the GitHub App private key PEM file
 
 ```shell
-$ ENCODED_JWT_TOKEN=$(GH_APP_ID=<app_id> GH_APP_KEY=<key> python main.py)
-$ echo $ENCODED_JWT_TOKEN
+$ GH_APP_ID=<app_id> GH_APP_KEY=<key> python main.py
+```
+
+## Get installation access token for a GitHub App
+
+Required environment variables:
+- `GH_APP_ID` The GitHub App ID
+- `GH_APP_KEY` The path for the GitHub App private key PEM file
+- `GH_APP_INST_ID` The GitHub App installation ID
+
+```shell
+$ GH_APP_ID=<app_id> GH_APP_KEY=<key> GH_APP_INST_ID=<app_inst_id> python main.py
 ```

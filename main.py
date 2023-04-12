@@ -2,10 +2,12 @@ import datetime
 import os
 import sys
 
+import requests
 import jwt
 
 gh_app_id = os.getenv('GH_APP_ID')
 gh_app_key = os.getenv('GH_APP_KEY')
+gh_app_inst_id = os.getenv('GH_APP_INST_ID')
 
 
 if __name__ == "__main__":
@@ -25,4 +27,12 @@ if __name__ == "__main__":
     }
     encoded = jwt.encode(payload=payload, key=key, algorithm="RS256")
 
-    print(encoded.decode())
+    if not gh_app_inst_id:
+        print(encoded.decode())
+    else:
+        url = f"https://api.github.com/app/installations/{gh_app_inst_id}/access_tokens"
+        headers = {
+            "Authorization": f"Bearer {encoded.decode()}"
+        }
+        response = requests.post(url, headers=headers)
+        print(response.json()["token"])
